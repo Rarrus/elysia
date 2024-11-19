@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, expect, it } from 'bun:test'
 import { post, req } from '../utils'
 

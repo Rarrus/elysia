@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'bun:test'
-import { Elysia, t } from '../../src'
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { req } from '../utils'
 import { signCookie } from '../../src/utils'
 
@@ -296,7 +297,7 @@ describe('Cookie Response', () => {
 		expect(await response.json()).toEqual(expected)
 	})
 
-	it("don't parse cookie type unless specified", async () => {
+	it('don\'t parse cookie type unless specified', async () => {
 		let value: string | undefined
 
 		const app = new Elysia().get(
@@ -348,7 +349,7 @@ describe('Cookie Response', () => {
 		expect(res).toEqual(['', '1'])
 	})
 
-	it("don't set cookie if new value is undefined", async () => {
+	it('don\'t set cookie if new value is undefined', async () => {
 		const app = new Elysia().get('/', ({ cookie: { id } }) => {
 			id.value = undefined
 

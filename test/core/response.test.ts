@@ -1,6 +1,7 @@
-import { Elysia, form, t } from '../../src'
+import { form } from '../../src'
 import { describe, expect, it } from 'bun:test'
 import { req } from '../utils'
+import Elysia from '../../src/class/Elysia'
 
 describe('Response', () => {
 	it('return formdata', async () => {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test'
-import Elysia from '../../src'
+import Elysia from '../../src/class/Elysia'
 import { req } from '../utils'
 
 describe('Redirect', () => {

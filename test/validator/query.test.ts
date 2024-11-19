@@ -1,5 +1,5 @@
-import { Context, Elysia, t } from '../../src'
-
+import { Context, t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, expect, it } from 'bun:test'
 import { req } from '../utils'
 
@@ -463,7 +463,7 @@ describe('Query Validator', () => {
 	// 	expect(value).toEqual(['1', '2'])
 	// })
 
-	it("don't parse query object without schema", async () => {
+	it('don\'t parse query object without schema', async () => {
 		const app = new Elysia().get('/', ({ query: { role } }) => role)
 
 		const response = await app
@@ -522,7 +522,7 @@ describe('Query Validator', () => {
 		expect(value).toBe('boolean')
 	})
 
-	it("don't parse object automatically unless explicitly specified", async () => {
+	it('don\'t parse object automatically unless explicitly specified', async () => {
 		let value: string | undefined
 
 		const app = new Elysia().get(
@@ -579,7 +579,10 @@ describe('Query Validator', () => {
 		const response = await app
 			.handle(
 				req(
-					`/?pagination=${JSON.stringify({ pageIndex: 1, pageLimit: 10 })}&pagination=${JSON.stringify({ pageIndex: 2, pageLimit: 9 })}`
+					`/?pagination=${JSON.stringify({
+						pageIndex: 1,
+						pageLimit: 10
+					})}&pagination=${JSON.stringify({ pageIndex: 2, pageLimit: 9 })}`
 				)
 			)
 			.then((x) => x.json())

@@ -1,4 +1,4 @@
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 
 import { describe, expect, it } from 'bun:test'
 import { req } from '../utils'
@@ -28,11 +28,11 @@ describe('map resolve', () => {
 			.resolve({ as: 'global' }, () => ({
 				hi: () => 'hi'
 			}))
-			// .mapResolve((resolvers) => ({
-			// 	...resolvers,
-			// 	hi2: () => 'hi'
-			// }))
-			// .get('/h2', ({ hi2 }) => hi2())
+		// .mapResolve((resolvers) => ({
+		// 	...resolvers,
+		// 	hi2: () => 'hi'
+		// }))
+		// .get('/h2', ({ hi2 }) => hi2())
 
 		const app = new Elysia().use(plugin).get('/', ({ hi }) => hi())
 
@@ -57,7 +57,7 @@ describe('map resolve', () => {
 		const app = new Elysia()
 			.use(plugin)
 			// @ts-expect-error
-			.get('/', ({ hi2 }) => typeof hi2 === "undefined")
+			.get('/', ({ hi2 }) => typeof hi2 === 'undefined')
 
 		const res = await app.handle(req('/')).then((t) => t.text())
 		const res2 = await app.handle(req('/h2')).then((t) => t.text())

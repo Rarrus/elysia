@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { describe, expect, it } from 'bun:test'
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 
 import { separateFunction, sucrose } from '../../src/sucrose'
 import { req } from '../utils'
@@ -9,22 +9,23 @@ describe('sucrose', () => {
 	it('common 1', () => {
 		expect(
 			sucrose({
-				handler: function ({ query }) {
+				handler: function({ query }) {
 					query.a
 				},
 				afterHandle: [],
 				beforeHandle: [],
 				error: [
 					function a({
-						query,
-						query: { a, c: d },
-						headers: { hello },
-						...rest
-					}) {
+								   query,
+								   query: { a, c: d },
+								   headers: { hello },
+								   ...rest
+							   }) {
 						query.b
 						rest.query.e
 					},
-					({ query: { f } }) => {}
+					({ query: { f } }) => {
+					}
 				],
 				mapResponse: [],
 				afterResponse: [],
@@ -128,7 +129,7 @@ describe('sucrose', () => {
 		expect(main.inference.headers).toBe(true)
 	})
 
-	it("don't link inference", async () => {
+	it('don\'t link inference', async () => {
 		const app = new Elysia({
 			cookie: {
 				secrets: 'Zero Exception',
@@ -177,7 +178,7 @@ describe('sucrose', () => {
 	it('infer all inferences if context is passed to function', () => {
 		expect(
 			sucrose({
-				handler: function (context) {
+				handler: function(context) {
 					console.log(context)
 				},
 				afterHandle: [],
@@ -205,7 +206,7 @@ describe('sucrose', () => {
 	it('infer all inferences if context is passed to function', () => {
 		expect(
 			sucrose({
-				handler: function ({ ...context }) {
+				handler: function({ ...context }) {
 					console.log(context)
 				},
 				afterHandle: [],
@@ -233,7 +234,7 @@ describe('sucrose', () => {
 	it('infer single object destructure property', () => {
 		expect(
 			sucrose({
-				handler: function ({ server }) {
+				handler: function({ server }) {
 					console.log(server)
 				},
 				afterHandle: [],

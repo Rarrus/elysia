@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'bun:test'
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { newWebsocket, wsOpen, wsClosed, wsMessage } from './utils'
 
 describe('WebSocket destructuring', () => {
@@ -13,7 +13,7 @@ describe('WebSocket destructuring', () => {
 						publish,
 						unsubscribe,
 						cork,
-						send,
+						send
 						// close,
 						// terminate
 					} = ws

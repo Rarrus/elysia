@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'bun:test'
 import { req } from '../utils'
 
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 
 describe('Stream', () => {
 	it('handle stream', async () => {

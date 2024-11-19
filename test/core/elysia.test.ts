@@ -1,9 +1,7 @@
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 
 import { describe, expect, it } from 'bun:test'
 import { req } from '../utils'
-
-import { AsyncLocalStorage } from 'async_hooks'
 
 describe('Edge Case', () => {
 	it('handle state', async () => {
@@ -16,7 +14,7 @@ describe('Edge Case', () => {
 	})
 
 	// https://github.com/oven-sh/bun/issues/1523
-	it("don't return HTTP 10", async () => {
+	it('don\'t return HTTP 10', async () => {
 		const app = new Elysia().get('/', ({ set }) => {
 			set.headers.Server = 'Elysia'
 

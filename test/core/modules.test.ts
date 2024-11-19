@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 
 import { describe, expect, it } from 'bun:test'
 import { req } from '../utils'
@@ -131,12 +131,12 @@ describe('Modules', () => {
 	it('handle async plugin', async () => {
 		const a =
 			(config = {}) =>
-			async (app: Elysia) => {
-				await sleep(0)
-				return app.derive(() => ({
-					derived: 'async'
-				}))
-			}
+				async (app: Elysia) => {
+					await sleep(0)
+					return app.derive(() => ({
+						derived: 'async'
+					}))
+				}
 
 		const app = new Elysia().use(a()).get('/', ({ derived }) => derived)
 

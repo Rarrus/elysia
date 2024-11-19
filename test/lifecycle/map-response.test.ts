@@ -1,7 +1,6 @@
-import { Elysia, form } from '../../src'
-
 import { describe, expect, it } from 'bun:test'
 import { req } from '../utils'
+import Elysia from '../../src/class/Elysia'
 
 describe('Map Response', () => {
 	it('work global', async () => {
@@ -75,7 +74,8 @@ describe('Map Response', () => {
 	it('map response only once', async () => {
 		const app = new Elysia().get('/', () => 'Hutao', {
 			mapResponse: [
-				() => {},
+				() => {
+				},
 				() => {
 					return new Response('A')
 				},
@@ -135,7 +135,8 @@ describe('Map Response', () => {
 
 	it('skip async', async () => {
 		const app = new Elysia()
-			.mapResponse(async () => {})
+			.mapResponse(async () => {
+			})
 			.get('/', () => 'Hutao')
 
 		const res = await app.handle(req('/')).then((x) => x.text())
@@ -219,11 +220,13 @@ describe('Map Response', () => {
 
 	it('mapResponse in error', async () => {
 		class CustomClass {
-			constructor(public name: string) {}
+			constructor(public name: string) {
+			}
 		}
 
 		const app = new Elysia()
-			.trace(() => {})
+			.trace(() => {
+			})
 			.onError(() => new CustomClass('aru'))
 			.mapResponse(({ response }) => {
 				if (response instanceof CustomClass)
@@ -240,11 +243,13 @@ describe('Map Response', () => {
 
 	it('mapResponse in error', async () => {
 		class CustomClass {
-			constructor(public name: string) {}
+			constructor(public name: string) {
+			}
 		}
 
 		const app = new Elysia()
-			.trace(() => {})
+			.trace(() => {
+			})
 			.onError(() => new CustomClass('aru'))
 			.mapResponse(({ response }) => {
 				if (response instanceof CustomClass)

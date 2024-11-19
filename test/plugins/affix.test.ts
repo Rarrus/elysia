@@ -1,5 +1,6 @@
 // @ts-nocheck
-import { Elysia, t } from '../../src'
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, it, expect } from 'bun:test'
 
 const setup = new Elysia()

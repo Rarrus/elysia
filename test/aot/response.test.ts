@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'bun:test'
-import { Elysia, t } from '../../src'
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { req } from '../utils'
 import { signCookie } from '../../src/utils'
 
@@ -212,7 +213,7 @@ describe('Dynamic Cookie Response', () => {
 		expect(response.status).toBe(200)
 	})
 
-	it("don't share context between race condition", async () => {
+	it('don\'t share context between race condition', async () => {
 		const resolver = Promise.withResolvers()
 
 		const app = new Elysia({ aot: false })

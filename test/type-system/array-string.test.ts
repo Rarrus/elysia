@@ -1,8 +1,7 @@
-import Elysia, { t } from '../../src'
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, expect, it } from 'bun:test'
 import { Value } from '@sinclair/typebox/value'
-import { TBoolean, TString, TypeBoxError } from '@sinclair/typebox'
-import { req } from '../utils'
 
 describe('TypeSystem - ArrayString', () => {
 	it('Create', () => {
@@ -57,22 +56,22 @@ describe('TypeSystem - ArrayString', () => {
 		)
 
 		const res1 = await app.handle(new Request('http://localhost', {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ id: JSON.stringify([1, 2, 3]) })
 		}))
 		expect(res1.status).toBe(200)
 
 		const res2 = await app.handle(new Request('http://localhost', {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ id: [1, 2, 3] })
 		}))
 		expect(res2.status).toBe(200)
 
 		const res3 = await app.handle(new Request('http://localhost', {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ id: ['a', 2, 3] })
 		}))
 		expect(res3.status).toBe(422)

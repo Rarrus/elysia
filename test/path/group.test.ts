@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'bun:test'
-import { Elysia, t } from '../../src'
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { post, req } from '../utils'
 
 describe('group', () => {
@@ -182,7 +183,7 @@ describe('group', () => {
 		])
 	})
 
-	it("skip don't duplicate prefix on group with hooks", () => {
+	it('skip don\'t duplicate prefix on group with hooks', () => {
 		const a = new Elysia({ prefix: '/course' }).group(
 			'/id/:courseId',
 			{

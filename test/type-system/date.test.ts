@@ -1,7 +1,8 @@
-import Elysia, { t } from '../../src'
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, expect, it } from 'bun:test'
 import { Value } from '@sinclair/typebox/value'
-import { TBoolean, TDate, TypeBoxError } from '@sinclair/typebox'
+import { TDate, TypeBoxError } from '@sinclair/typebox'
 import { post } from '../utils'
 
 describe('TypeSystem - Date', () => {

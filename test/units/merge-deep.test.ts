@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'bun:test'
 
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { mergeDeep } from '../../src/utils'
 import { req } from '../utils'
 

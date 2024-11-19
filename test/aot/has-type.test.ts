@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'bun:test'
+import { describe, expect, it } from 'bun:test'
 
 import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { hasType } from '../../src/compose'
 
 describe('Has Transform', () => {

@@ -1,5 +1,5 @@
-import { Elysia, t } from '../../src'
-
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, expect, it } from 'bun:test'
 import { post } from '../utils'
 
@@ -416,7 +416,7 @@ describe('Body Validator', () => {
 		expect(value).toBe('number')
 	})
 
-	it("coerce number to numeric", async () => {
+	it('coerce number to numeric', async () => {
 		const app = new Elysia().post('/', ({ body }) => typeof body, {
 			body: t.Number()
 		})
@@ -434,7 +434,7 @@ describe('Body Validator', () => {
 		expect(response.status).toBe(200)
 	})
 
-	it("don't coerce number object to numeric", async () => {
+	it('don\'t coerce number object to numeric', async () => {
 		const app = new Elysia().post('/', ({ body: { id } }) => typeof id, {
 			body: t.Object({
 				id: t.Number()
@@ -450,7 +450,7 @@ describe('Body Validator', () => {
 		expect(response.status).toBe(422)
 	})
 
-	it("coerce string to boolean", async () => {
+	it('coerce string to boolean', async () => {
 		const app = new Elysia().post('/', ({ body }) => typeof body, {
 			body: t.Boolean()
 		})
@@ -468,7 +468,7 @@ describe('Body Validator', () => {
 		expect(response.status).toBe(200)
 	})
 
-	it("don't coerce string object to boolean", async () => {
+	it('don\'t coerce string object to boolean', async () => {
 		const app = new Elysia().post('/', ({ body: { id } }) => typeof id, {
 			body: t.Object({
 				id: t.Boolean()

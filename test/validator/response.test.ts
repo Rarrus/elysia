@@ -1,5 +1,5 @@
-import { Elysia, error, t } from '../../src'
-
+import { error, t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, expect, it } from 'bun:test'
 import { post, req, upload } from '../utils'
 
@@ -134,7 +134,8 @@ describe('Response Validator', () => {
 	})
 
 	it('allow undefined', async () => {
-		const app = new Elysia().get('/', () => {}, {
+		const app = new Elysia().get('/', () => {
+		}, {
 			body: t.Union([
 				t.Undefined(),
 				t.Object({
@@ -388,7 +389,7 @@ describe('Response Validator', () => {
 			})
 			.get(
 				'/error',
-				({ error }) => error("I'm a teapot", 'Kirifuji Nagisa'),
+				({ error }) => error('I\'m a teapot', 'Kirifuji Nagisa'),
 				{
 					response: {
 						200: t.String(),
@@ -400,7 +401,7 @@ describe('Response Validator', () => {
 			.get(
 				'/validate-error',
 				// @ts-expect-error
-				({ error }) => error("I'm a teapot", 'Nagisa'),
+				({ error }) => error('I\'m a teapot', 'Nagisa'),
 				{
 					response: {
 						200: t.String(),

@@ -1,7 +1,8 @@
-import { Elysia, t } from '../../src'
+import { t } from '../../src'
 
 import { describe, expect, it } from 'bun:test'
-import { post, req } from '../utils'
+import { req } from '../utils'
+import Elysia from '../../src/class/Elysia'
 
 describe('Validator Additional Case', () => {
 	it('validate beforeHandle', async () => {
@@ -49,7 +50,8 @@ describe('Validator Additional Case', () => {
 	it('validate beforeHandle with afterHandle', async () => {
 		const app = new Elysia()
 			.get('/', () => 'Mutsuki need correction 💢💢💢', {
-				beforeHandle() {},
+				beforeHandle() {
+				},
 				afterHandle() {
 					return 'Mutsuki need correction 💢💢💢'
 				},

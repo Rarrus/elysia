@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'bun:test'
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 
 describe('plugin', () => {
 	it('scoped plugin routes are visible in app.routes', () => {

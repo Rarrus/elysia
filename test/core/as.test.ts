@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'bun:test'
-import { Elysia, t } from '../../src'
+import { describe, expect, it } from 'bun:test'
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { req } from '../utils'
 
 describe('as', () => {
@@ -80,7 +81,7 @@ describe('as', () => {
 
 		const inner = new Elysia()
 			.guard({
-				response: t.Number(),
+				response: t.Number()
 			})
 			.onBeforeHandle(() => {
 				called++
@@ -164,7 +165,7 @@ describe('as', () => {
 				as: 'scoped',
 				response: t.String()
 			})
-            .onBeforeHandle({ as: 'scoped' }, () => {
+			.onBeforeHandle({ as: 'scoped' }, () => {
 				called++
 			})
 			.get('/plugin', () => 'ok')

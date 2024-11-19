@@ -1,5 +1,5 @@
-import { Elysia, t } from '../../src'
-
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, expect, it } from 'bun:test'
 import { post, req } from '../utils'
 
@@ -363,7 +363,8 @@ describe('Path', () => {
 
 	it('add path if onRequest is used', async () => {
 		const app = new Elysia()
-			.onRequest(() => {})
+			.onRequest(() => {
+			})
 			.onAfterHandle(({ path }) => {
 				return path
 			})

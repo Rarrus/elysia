@@ -1,6 +1,7 @@
-import { describe, it, expect } from 'bun:test'
-import { Elysia, t } from '../../src'
-import { newWebsocket, wsOpen, wsMessage, wsClosed } from './utils'
+import { describe, expect, it } from 'bun:test'
+import { t } from '../../src'
+import Elysia, { Elysia } from '../../src/class/Elysia'
+import { newWebsocket, wsClosed, wsMessage, wsOpen } from './utils'
 
 describe('WebSocket message', () => {
 	it('should send & receive', async () => {

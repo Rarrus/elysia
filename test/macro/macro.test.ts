@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { describe, it, expect } from 'bun:test'
-import Elysia, { error } from '../../src'
+import { describe, expect, it } from 'bun:test'
+import { error } from '../../src'
 import { req } from '../utils'
+import { Elysia } from '../../src/class/Elysia'
 
 describe('Macro', () => {
 	it('work', async () => {
@@ -196,7 +197,8 @@ describe('Macro', () => {
 				}
 			}))
 			.get('/', () => 'Hello World', {
-				hi: () => {}
+				hi: () => {
+				}
 			})
 
 		expect(app.router.history[0].hooks.parse?.length).toEqual(1)
@@ -210,7 +212,8 @@ describe('Macro', () => {
 				}
 			}))
 			.get('/', () => 'Hello World', {
-				hi: () => {}
+				hi: () => {
+				}
 			})
 
 		expect(app.router.history[0].hooks.transform?.length).toEqual(1)
@@ -224,7 +227,8 @@ describe('Macro', () => {
 				}
 			}))
 			.get('/', () => 'Hello World', {
-				hi: () => {}
+				hi: () => {
+				}
 			})
 
 		expect(app.router.history[0].hooks.beforeHandle?.length).toEqual(1)
@@ -238,7 +242,8 @@ describe('Macro', () => {
 				}
 			}))
 			.get('/', () => 'Hello World', {
-				hi: () => {}
+				hi: () => {
+				}
 			})
 
 		expect(app.router.history[0].hooks.afterHandle?.length).toEqual(1)
@@ -252,7 +257,8 @@ describe('Macro', () => {
 				}
 			}))
 			.get('/', () => 'Hello World', {
-				hi: () => {}
+				hi: () => {
+				}
 			})
 
 		expect(app.router.history[0].hooks.error?.length).toEqual(1)
@@ -266,7 +272,8 @@ describe('Macro', () => {
 				}
 			}))
 			.get('/', () => 'Hello World', {
-				hi: () => {}
+				hi: () => {
+				}
 			})
 
 		expect(app.router.history[0].hooks.afterResponse?.length).toEqual(1)
@@ -390,7 +397,7 @@ describe('Macro', () => {
 		expect(err).not.toBe('NOT_FOUND')
 	})
 
-	it("don't duplicate call on as plugin", async () => {
+	it('don\'t duplicate call on as plugin', async () => {
 		let called = 0
 
 		const plugin = new Elysia()
@@ -480,7 +487,7 @@ describe('Macro', () => {
 		expect(status).toBe(418)
 	})
 
-	it("don't inherits macro to plugin without type reference", () => {
+	it('don\'t inherits macro to plugin without type reference', () => {
 		const called = <string[]>[]
 
 		const plugin = new Elysia().get('/hello', () => 'hello', {
@@ -504,7 +511,7 @@ describe('Macro', () => {
 		expect(called).toEqual(['nagisa', 'hifumi'])
 	})
 
-	it("don't duplicate macro call", async () => {
+	it('don\'t duplicate macro call', async () => {
 		let registered = 0
 		let called = 0
 

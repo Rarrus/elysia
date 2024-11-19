@@ -1,8 +1,9 @@
-import { describe, it, expect } from 'bun:test'
+import { describe, expect, it } from 'bun:test'
 import { mapResponse } from '../../src/handler'
 import { Passthrough } from './utils'
-import Elysia, { form } from '../../src'
+import { form } from '../../src'
 import { req } from '../utils'
+import Elysia from '../../src/class/Elysia'
 
 const defaultContext = {
 	cookie: {},
@@ -20,7 +21,8 @@ const context = {
 }
 
 class Student {
-	constructor(public name: string) {}
+	constructor(public name: string) {
+	}
 
 	toString() {
 		return JSON.stringify({
@@ -29,7 +31,8 @@ class Student {
 	}
 }
 
-class CustomResponse extends Response {}
+class CustomResponse extends Response {
+}
 
 describe('Map Response', () => {
 	it('map string', async () => {
@@ -272,7 +275,7 @@ describe('Map Response', () => {
 
 	it('map named status', async () => {
 		const response = mapResponse('Shiroko', {
-			status: "I'm a teapot",
+			status: 'I\'m a teapot',
 			headers: {},
 			cookie: {}
 		})
@@ -284,7 +287,7 @@ describe('Map Response', () => {
 
 	it('map redirect', async () => {
 		const response = mapResponse('Shiroko', {
-			status: "I'm a teapot",
+			status: 'I\'m a teapot',
 			headers: {
 				Name: 'Sorasaki Hina'
 			},

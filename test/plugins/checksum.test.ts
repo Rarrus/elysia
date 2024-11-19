@@ -1,5 +1,5 @@
-import { Elysia, t } from '../../src'
-
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, expect, it } from 'bun:test'
 import { req } from '../utils'
 
@@ -9,7 +9,8 @@ describe('Checksum', () => {
 			new Elysia({
 				name: '@elysiajs/cookie',
 				seed: options
-			}).onTransform({ as: 'global' }, () => {})
+			}).onTransform({ as: 'global' }, () => {
+			})
 
 		const group = new Elysia().use(cookie({})).get('/a', () => 'Hi')
 
@@ -29,7 +30,8 @@ describe('Checksum', () => {
 			new Elysia({
 				name: '@elysiajs/cookie',
 				seed: options
-			}).onTransform({ as: 'global' }, () => {})
+			}).onTransform({ as: 'global' }, () => {
+			})
 
 		const group = new Elysia().use(cookie()).get('/a', () => 'Hi')
 
@@ -49,7 +51,8 @@ describe('Checksum', () => {
 			new Elysia({
 				name: '@elysiajs/cookie',
 				seed: options
-			}).onTransform({ as: 'global' }, () => {})
+			}).onTransform({ as: 'global' }, () => {
+			})
 
 		const group = new Elysia().use(cookie({})).get('/a', () => 'Hi')
 
@@ -74,7 +77,8 @@ describe('Checksum', () => {
 			new Elysia({
 				name: '@elysiajs/cookie',
 				seed: options
-			}).onTransform({ as: 'global' }, () => {})
+			}).onTransform({ as: 'global' }, () => {
+			})
 
 		const group = new Elysia().use(cookie()).get('/a', () => 'Hi')
 
@@ -95,10 +99,12 @@ describe('Checksum', () => {
 			new Elysia({
 				name: '@elysiajs/cookie',
 				seed: options
-			}).onTransform({ as: 'global' }, () => {})
+			}).onTransform({ as: 'global' }, () => {
+			})
 
 		const group = new Elysia().use(cookie()).get('/a', () => 'Hi', {
-			transform() {}
+			transform() {
+			}
 		})
 
 		const app = new Elysia()
@@ -120,7 +126,8 @@ describe('Checksum', () => {
 			new Elysia({
 				name: '@elysiajs/cookie',
 				seed: options
-			}).onTransform({ as: 'global' }, () => {})
+			}).onTransform({ as: 'global' }, () => {
+			})
 
 		const group = new Elysia()
 			.use(cookie())

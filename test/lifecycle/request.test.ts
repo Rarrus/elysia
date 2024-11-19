@@ -1,4 +1,4 @@
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 
 import { describe, expect, it } from 'bun:test'
 import { req, delay } from '../utils'
@@ -36,8 +36,8 @@ describe('On Request', () => {
 				return 'Unauthorized'
 			})
 			.get('/', () => {
-				console.log("This shouldn't be run")
-				return "You shouldn't see this"
+				console.log('This shouldn\'t be run')
+				return 'You shouldn\'t see this'
 			})
 
 		const res = await app.handle(req('/'))

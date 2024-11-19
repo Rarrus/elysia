@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'bun:test'
 
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 
 describe('Mount', () => {
 	it('preserve request URL', async () => {

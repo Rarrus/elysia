@@ -1,4 +1,4 @@
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 
 import { describe, expect, it } from 'bun:test'
 import { delay, req } from '../utils'
@@ -173,7 +173,7 @@ describe('Before Handle', () => {
 		expect(await res.text()).toBe('Warukunai yo ne')
 	})
 
-	it("handle on('beforeHandle')", async () => {
+	it('handle on(\'beforeHandle\')', async () => {
 		const app = new Elysia()
 			.on('beforeHandle', async ({ params: { name } }) => {
 				await new Promise<void>((resolve) =>

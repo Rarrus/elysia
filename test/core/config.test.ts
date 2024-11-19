@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'bun:test'
-import { Elysia, t } from '../../src'
+import { describe, expect, it } from 'bun:test'
+import { Elysia } from '../../src/class/Elysia'
 
 describe('config', () => {
 	it('standard hostname', async () => {

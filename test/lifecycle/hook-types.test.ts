@@ -1,4 +1,4 @@
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { req } from '../../test/utils'
 import { describe, it, expect } from 'bun:test'
 

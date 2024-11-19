@@ -1,5 +1,6 @@
-import { describe, it, expect } from 'bun:test'
-import { Elysia, t } from '../../src'
+import { describe, expect, it } from 'bun:test'
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { post, req } from '../utils'
 
 describe('Normalize', () => {
@@ -310,7 +311,7 @@ describe('Normalize', () => {
 		})
 	})
 
-	it("don't normalize query on additionalProperties", async () => {
+	it('don\'t normalize query on additionalProperties', async () => {
 		const app = new Elysia().get('/', ({ query }) => query, {
 			query: t.Object(
 				{

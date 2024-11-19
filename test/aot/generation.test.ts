@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { describe, it, expect } from 'bun:test'
-import { Context, Elysia, t } from '../../src'
+import { describe, expect, it } from 'bun:test'
+import { Context, t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { post, req } from '../utils'
 
 describe('code generation', () => {
@@ -21,7 +22,7 @@ describe('code generation', () => {
 
 		const app = new Elysia()
 			.post('/1', ({ body }) => body)
-			.post('/2', function ({ body }) {
+			.post('/2', function({ body }) {
 				return body
 			})
 			.post('/3', (context) => {
@@ -76,7 +77,7 @@ describe('code generation', () => {
 
 		const app = new Elysia()
 			.post('/1', (context) => handle(context))
-			.post('/2', function (context) {
+			.post('/2', function(context) {
 				return handle(context)
 			})
 			.post('/3', (context) => {

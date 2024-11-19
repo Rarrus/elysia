@@ -1,4 +1,6 @@
-import { Elysia, ElysiaConfig, NotFoundError, t } from '../../src'
+import { NotFoundError, t } from '../../src'
+import Elysia from '../../src/class/Elysia'
+
 
 import { describe, expect, it } from 'bun:test'
 import { post, req } from '../utils'
@@ -65,13 +67,13 @@ describe('Dynamic Mode', () => {
 			.get('/', () => 'Hi')
 			.onError(({ code }) => {
 				if (code === 'NOT_FOUND')
-					return new Response("I'm a teapot", {
+					return new Response('I\'m a teapot', {
 						status: 418
 					})
 			})
 			.handle(req('/not-found'))
 
-		expect(await res.text()).toBe("I'm a teapot")
+		expect(await res.text()).toBe('I\'m a teapot')
 		expect(res.status).toBe(418)
 	})
 

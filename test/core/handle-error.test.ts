@@ -1,4 +1,5 @@
-import { Elysia, InternalServerError, NotFoundError, error, t } from '../../src'
+import { error, InternalServerError, NotFoundError, t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 
 import { describe, expect, it } from 'bun:test'
 import { req } from '../utils'
@@ -59,13 +60,13 @@ describe('Handle Error', () => {
 			.get('/', () => 'Hi')
 			.onError(({ code }) => {
 				if (code === 'NOT_FOUND')
-					return new Response("I'm a teapot", {
+					return new Response('I\'m a teapot', {
 						status: 418
 					})
 			})
 			.handle(req('/not-found'))
 
-		expect(await res.text()).toBe("I'm a teapot")
+		expect(await res.text()).toBe('I\'m a teapot')
 		expect(res.status).toBe(418)
 	})
 
@@ -206,7 +207,7 @@ describe('Handle Error', () => {
 	})
 
 	it('handle error in Transform', async () => {
-		const route = new Elysia().get('/', ({query: {aid}}) => aid, {
+		const route = new Elysia().get('/', ({ query: { aid } }) => aid, {
 			query: t.Object({
 				aid: t.Transform(t.String())
 					.Decode((value) => {
@@ -220,7 +221,7 @@ describe('Handle Error', () => {
 		expect(response.status).toEqual(404)
 		expect(await response.text()).toEqual('foo')
 
-		response = await (new Elysia({aot: true})).use(route).handle(req('/?aid=a'))
+		response = await (new Elysia({ aot: true })).use(route).handle(req('/?aid=a'))
 		expect(response.status).toEqual(404)
 		expect(await response.text()).toEqual('foo')
 	})

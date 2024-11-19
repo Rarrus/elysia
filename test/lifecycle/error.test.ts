@@ -1,14 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {
-	Elysia,
-	InternalServerError,
-	ParseError,
-	ValidationError,
-	error,
-	t
-} from '../../src'
+import { InternalServerError, ParseError, t } from '../../src'
 import { describe, expect, it } from 'bun:test'
 import { post, req } from '../utils'
+import Elysia from '../../src/class/Elysia'
+
 
 describe('error', () => {
 	it('use custom 404', async () => {
@@ -132,7 +127,7 @@ describe('error', () => {
 
 	it('return correct named status on error function', async () => {
 		const app = new Elysia().get('/', ({ error }) =>
-			error("I'm a teapot", 'I am a teapot')
+			error('I\'m a teapot', 'I am a teapot')
 		)
 
 		const response = await app.handle(req('/'))
@@ -146,16 +141,16 @@ describe('error', () => {
 		const response = await app.handle(req('/'))
 
 		expect(response.status).toBe(418)
-		expect(await response.text()).toBe("I'm a teapot")
+		expect(await response.text()).toBe('I\'m a teapot')
 	})
 
 	it('return correct named status without value on error function', async () => {
-		const app = new Elysia().get('/', ({ error }) => error("I'm a teapot"))
+		const app = new Elysia().get('/', ({ error }) => error('I\'m a teapot'))
 
 		const response = await app.handle(req('/'))
 
 		expect(response.status).toBe(418)
-		expect(await response.text()).toBe("I'm a teapot")
+		expect(await response.text()).toBe('I\'m a teapot')
 	})
 
 	it('handle error in order', async () => {

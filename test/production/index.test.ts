@@ -1,4 +1,5 @@
-import { Elysia, t } from '../../src'
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, it, expect, beforeEach } from 'bun:test'
 
 describe('NODE_ENV=production', () => {

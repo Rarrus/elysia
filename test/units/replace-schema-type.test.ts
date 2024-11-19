@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'bun:test'
-import { Elysia, t } from '../../src'
+import { t } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { replaceSchemaType } from '../../src/utils'
 import { req } from '../utils'
 
@@ -145,7 +146,7 @@ describe('Replace Schema Type', () => {
 				}),
 				{
 					from: t.Object({}),
-                    to: () => t.ObjectString({}),
+					to: () => t.ObjectString({}),
 					excludeRoot: true,
 					untilObjectFound: false
 				}
@@ -167,7 +168,7 @@ describe('Replace Schema Type', () => {
 				}),
 				{
 					from: t.Object({}),
-                    to: () => t.ObjectString({}),
+					to: () => t.ObjectString({}),
 					excludeRoot: true
 				}
 			)

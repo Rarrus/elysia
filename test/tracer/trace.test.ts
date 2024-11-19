@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'bun:test'
-import { Elysia, type TraceProcess, type TraceEvent } from '../../src'
+import { type TraceEvent, type TraceProcess } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
+
 import { req } from '../utils'
 
 describe('trace', () => {
@@ -49,24 +51,24 @@ describe('trace', () => {
 
 		const detectEvent =
 			(event: TraceEvent) =>
-			({ onStop }: TraceProcess<'begin'>) => {
-				onStop(() => {
-					called.push(event)
-				})
-			}
+				({ onStop }: TraceProcess<'begin'>) => {
+					onStop(() => {
+						called.push(event)
+					})
+				}
 
 		const plugin = new Elysia().trace(
 			{ as: 'scoped' },
 			({
-				onRequest,
-				onParse,
-				onTransform,
-				onBeforeHandle,
-				onHandle,
-				onAfterHandle,
-				onMapResponse,
-				onAfterResponse
-			}) => {
+				 onRequest,
+				 onParse,
+				 onTransform,
+				 onBeforeHandle,
+				 onHandle,
+				 onAfterHandle,
+				 onMapResponse,
+				 onAfterResponse
+			 }) => {
 				onRequest(detectEvent('request'))
 				onParse(detectEvent('parse'))
 				onTransform(detectEvent('transform'))
@@ -94,33 +96,36 @@ describe('trace', () => {
 		const app = new Elysia().get('/', 'hi')
 	})
 
-	it("don't crash on composer", () => {
+	it('don\'t crash on composer', () => {
 		const called = <string[]>[]
 
 		const detectEvent =
 			(event: TraceEvent) =>
-			({ onStop }: TraceProcess<'begin'>) => {
-				onStop(() => {
-					called.push(event)
-				})
-			}
+				({ onStop }: TraceProcess<'begin'>) => {
+					onStop(() => {
+						called.push(event)
+					})
+				}
 
 		const plugin = new Elysia()
-			.onRequest(() => {})
-			.onTransform(() => {})
-			.onError(() => {})
+			.onRequest(() => {
+			})
+			.onTransform(() => {
+			})
+			.onError(() => {
+			})
 			.trace(
 				{ as: 'scoped' },
 				({
-					onRequest,
-					onParse,
-					onTransform,
-					onBeforeHandle,
-					onHandle,
-					onAfterHandle,
-					onMapResponse,
-					onAfterResponse
-				}) => {
+					 onRequest,
+					 onParse,
+					 onTransform,
+					 onBeforeHandle,
+					 onHandle,
+					 onAfterHandle,
+					 onMapResponse,
+					 onAfterResponse
+				 }) => {
 					onRequest(detectEvent('request'))
 					onParse(detectEvent('parse'))
 					onTransform(detectEvent('transform'))
@@ -229,7 +234,8 @@ describe('trace', () => {
 	})
 
 	it('deduplicate plugin when name is provided', () => {
-		const a = new Elysia({ name: 'a' }).trace({ as: 'global' }, () => {})
+		const a = new Elysia({ name: 'a' }).trace({ as: 'global' }, () => {
+		})
 		const b = new Elysia().use(a)
 
 		const app = new Elysia()

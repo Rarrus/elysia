@@ -1,4 +1,4 @@
-import { Elysia } from '../../src'
+import { Elysia } from '../../src/class/Elysia'
 import { describe, expect, it } from 'bun:test'
 import { post, req } from '../utils'
 
@@ -18,9 +18,11 @@ describe('Trace Detail', async () => {
 					})
 				})
 			})
-			.onParse(function luna() {})
+			.onParse(function luna() {
+			})
 			.post('/', ({ body }) => body, {
-				parse: [function kindred() {}]
+				parse: [function kindred() {
+				}]
 			})
 
 		const { headers } = await app.handle(post('/', {}))
@@ -43,9 +45,11 @@ describe('Trace Detail', async () => {
 					})
 				})
 			})
-			.onTransform(function luna() {})
+			.onTransform(function luna() {
+			})
 			.get('/', () => 'a', {
-				transform: [function kindred() {}]
+				transform: [function kindred() {
+				}]
 			})
 
 		const { headers } = await app.handle(req('/'))
@@ -68,9 +72,11 @@ describe('Trace Detail', async () => {
 					})
 				})
 			})
-			.onBeforeHandle(function luna() {})
+			.onBeforeHandle(function luna() {
+			})
 			.get('/', () => 'a', {
-				beforeHandle: [function kindred() {}]
+				beforeHandle: [function kindred() {
+				}]
 			})
 
 		const { headers } = await app.handle(req('/'))
@@ -93,9 +99,11 @@ describe('Trace Detail', async () => {
 					})
 				})
 			})
-			.onAfterHandle(function luna() {})
+			.onAfterHandle(function luna() {
+			})
 			.get('/', () => 'a', {
-				afterHandle: [function kindred() {}]
+				afterHandle: [function kindred() {
+				}]
 			})
 
 		const { headers } = await app.handle(req('/'))
@@ -118,9 +126,11 @@ describe('Trace Detail', async () => {
 					})
 				})
 			})
-			.mapResponse(function luna() {})
+			.mapResponse(function luna() {
+			})
 			.get('/', () => 'a', {
-				mapResponse: [function kindred() {}]
+				mapResponse: [function kindred() {
+				}]
 			})
 
 		const { headers } = await app.handle(req('/'))
@@ -143,9 +153,11 @@ describe('Trace Detail', async () => {
 					})
 				})
 			})
-			.onAfterResponse(function luna() {})
+			.onAfterResponse(function luna() {
+			})
 			.get('/', () => 'a', {
-				afterResponse: [function kindred() {}]
+				afterResponse: [function kindred() {
+				}]
 			})
 
 		app.handle(req('/'))
